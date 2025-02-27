@@ -19,17 +19,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       const output = path.join(downloadDir, 'downloaded_video.%(ext)s');
-
-      // Options for yt-dlp
       const options = {
-        output,        // Define output path
-        noCheckCertificate: true, // Disable certificate verification (you may need this for certain sites)
+        output,        //output path
+        noCheckCertificate: true, // Disable certificate verification 
       };
 
       // Download the video using yt-dlp-wrap
       const result = await ytDlp(url, options);
 
-      // Return success message along with download details
+      // success message along with download details
       res.status(200).json({ message: 'Video downloaded successfully!', result });
     } catch (error: any) {
       console.error("Error in downloading video", error);
