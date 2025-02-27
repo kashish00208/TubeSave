@@ -32,8 +32,9 @@ const HomePage = () => {
       <form
         onSubmit={handleInputChange}
       >
-        <input type="text" onSubmit={(e)=>SetUrl(url)} value={url}/>
+        <input type="text" value={url} onChange={(e)=>SetUrl(e.target.value)} placeholder="Enter the URl"/>
         <button>Submit</button>
+        <p>{message}</p>
       </form>
     </div>
   );
