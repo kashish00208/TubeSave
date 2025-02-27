@@ -1,9 +1,17 @@
-import ytDlp from 'yt-dlp-wrap';
+import YTDlpWrap from 'yt-dlp-wrap';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 import fs from 'fs';
 
-// Check if downloads folder exists
+interface Progress {
+  eta: number;          
+  downloaded: number;   
+  total: number;        
+  speed: number;       
+  percentage: number;  
+  current_file: string; 
+}
+
 const downloadDir = path.join(process.cwd(), 'downloads');
 if (!fs.existsSync(downloadDir)) {
   fs.mkdirSync(downloadDir, { recursive: true });
@@ -18,19 +26,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
+      // Define output path
       const output = path.join(downloadDir, 'downloaded_video.%(ext)s');
-      const options = {
-        output,        //output path
-        noCheckCertificate: true, // Disable certificate verification 
-      };
-
+      
       // Download the video using yt-dlp-wrap
-      const result = await ytDlp(url, options);
+      const result = await YTDlpWrap.execPromise([
+        url,
+        '-f',
+        'best', 
+        '-o',
+        output 
+      ])
+      .on('progress', (progress: Progress) => {
+        console.log(progress); 
+      });
 
-      // success message along with download details
+      console.log(result); 
+
       res.status(200).json({ message: 'Video downloaded successfully!', result });
     } catch (error: any) {
-      console.error("Error in downloading video", error);
+      console.error('Error in downloading video:', error);
       res.status(500).json({ error: error.message || 'Failed to download video' });
     }
   } else {
