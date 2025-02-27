@@ -4,31 +4,37 @@ import {useState} from 'react'
 const HomePage = () => {
   const [url,seturl] = useState("");
   const [message,SetMessage] = useState("");
-  const handleSubmit = async(e:React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(!url){
-      SetMessage("PRovide a URL");
+  
+    if (!url) {
+      SetMessage("Provide a URL");
+      return; 
     }
-    SetMessage("");
-    try{
-      const result = await fetch('/api/download',{
-        method:"POST",
-        headers:{
-          'content-type':'application/json'
+  
+    SetMessage(""); 
+    try {
+      const result = await fetch("/api/download", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify({url})
-      })
-      const data = await result.json()
-      if(data.success){
-        SetMessage(`Downloaded successfully : ${data.message}`)
-      }else{
-        SetMessage(`Error : ${data.message}`)
+        body: JSON.stringify({ url }),
+      });
+  
+      const data = await result.json();
+  
+      if (data.success) {
+        SetMessage(`Downloaded successfully: ${data.message}`);
+      } else {
+        SetMessage(`Error: ${data.message}`);
       }
-    }catch(error){
+    } catch (error) {
       SetMessage("Error while downloading the video");
-      console.log(`Error : ${error}`)
+      console.error("Error details:", error); 
     }
-  }
+  };
+  
   return (
     <>
       <div>
