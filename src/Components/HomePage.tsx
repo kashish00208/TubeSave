@@ -13,7 +13,7 @@ const HomePage = () => {
       const responce = fetch("/api/download", {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-type": "application/json",
         },
         body: JSON.stringify(url),
       });
