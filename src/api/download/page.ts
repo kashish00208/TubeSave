@@ -1,7 +1,7 @@
-import YTDlpWrap from 'yt-dlp-wrap';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 import fs from 'fs';
+import youtubeDl from 'youtube-dl-exec';
 
 interface Progress {
   eta: number;          
@@ -26,7 +26,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      
+      const YTDLwrap = require('youtube-dl-exec');
+      youtubeDl(url,{
+        dumpSingleJson:true,
+        noCheckCertificates:true,
+        noWarnings:true,
+        preferFreeFormats:true,
+        addHeader:['referrer:youtube.com','user-agent:googlebot']
+      }).then(output=>console.log(output))
     } catch (error: any) {
       console.error('Error in downloading video:', error);
       res.status(500).json({ error: error.message || 'Failed to download video' });
