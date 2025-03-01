@@ -28,22 +28,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       // Define output path
       const output = path.join(downloadDir, 'downloaded_video.%(ext)s');
+      const youtubeEvent = YTDlpWrap.downloadFile(url,output)
       
-      // Download the video using yt-dlp-wrap
-      const result = await YTDlpWrap.execPromise([
-        url,
-        '-f',  
-        'best', 
-        '-o',
-        output 
-      ])
-      .on('progress', (progress: Progress) => {
-        console.log(progress); 
-      });
-
-      console.log(result); 
-
-      res.status(200).json({ message: 'Video downloaded successfully!', result });
+      res.status(200).json({ message: 'Video downloaded successfully!' });
     } catch (error: any) {
       console.error('Error in downloading video:', error);
       res.status(500).json({ error: error.message || 'Failed to download video' });
