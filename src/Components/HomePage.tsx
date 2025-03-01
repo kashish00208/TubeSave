@@ -1,39 +1,58 @@
 "use client";
-import { use, useState } from "react";
+import { useState } from "react";
+
 const HomePage = () => {
-  const [url, SetUrl] = useState("");
+  const [url, setUrl] = useState("");
   const [message, setMessage] = useState("");
+
   const handleInputChange = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!url) {
-      setMessage("Provid a url");
+      setMessage("Provide a URL");
+      return; 
     }
-    setMessage("");
+
+    setMessage(""); 
+
     try {
-      const responce = fetch("/api/download", {
+      const response = await fetch("/api/download", {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(url),
+        body: JSON.stringify({ url }), 
       });
-      const data = await (await responce).json();
-      if (data.success) {
+
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        setMessage(`Error: ${errorData.error || 'Failed to download video'}`);
+        return;
+      }
+
+      const data = await response.json();
+      if (data.message) {
         setMessage("Video Downloaded");
       } else {
-        setMessage("Error while downloading vdos");
+        setMessage("Error while downloading video");
       }
     } catch (error) {
-      console.log(`Error:${error}`);
+      console.log(`Error: ${error}`);
+      setMessage("An unexpected error occurred");
     }
   };
+
   return (
     <div>
-      <form
-        onSubmit={handleInputChange}
-      >
-        <input type="text" value={url} onChange={(e)=>SetUrl(e.target.value)} placeholder="Enter the URl"/>
-        <button>Submit</button>
+      <form onSubmit={handleInputChange}>
+        <input
+          type="text"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder="Enter the URL"
+        />
+        <button type="submit">Submit</button>
         <p>{message}</p>
       </form>
     </div>
