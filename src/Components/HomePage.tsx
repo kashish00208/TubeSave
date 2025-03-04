@@ -7,12 +7,10 @@ const HomePage = () => {
 
   const handleInputChange = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!url) {
       setMessage("Provide a URL");
       return; 
     }
-
     setMessage(""); 
 
     try {
@@ -23,10 +21,10 @@ const HomePage = () => {
         },
         body: JSON.stringify({ url }), 
       });
-
-      
+      console.log("it works fine until here")
       if (!response.ok) {
         const errorData = await response.json();
+        console.log("check 5")
         setMessage(`Error: ${errorData.error || 'Failed to download video'}`);
         return;
       }

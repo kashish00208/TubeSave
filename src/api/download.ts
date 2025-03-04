@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 import fs from 'fs';
-import youtubeDl from 'youtube-dl-exec';
+import youtubeDl from 'youtube-dl-exec'; 
 
 const downloadDir = path.join(process.cwd(), 'downloads');
 if (!fs.existsSync(downloadDir)) {
@@ -22,11 +22,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}.mp4`); 
+      const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}.mp4`);
 
-      // Execute youtube-dl with required options
+     
       const output = await youtubeDl(url, {
-        output: filePath, // output file path
+        output: filePath, //output file path
         dumpSingleJson: true,
         noCheckCertificates: true,
         noWarnings: true,
@@ -34,12 +34,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         addHeader: ['referrer:youtube.com', 'user-agent:googlebot'],
       });
 
-      // If successful, success message
-      console.log(output);
-      res.status(200).json({ message: 'Download successful', filePath });
+      console.log('Downloaded video successfully:', output);
+
+      const fileUrl = `/downloads/${path.basename(filePath)}`;
+      res.status(200).json({ message: 'Download successful', fileUrl });
     } catch (error: any) {
       console.error('Error in downloading video:', error);
-      res.status(500).json({ error: error.message || 'Failed to download video' });
+      res.status(500).json({
+        error: error.message || 'Failed to download video',
+        stack: error.stack,
+      });
     }
   } else {
     res.status(405).json({ error: 'Method not allowed' });
