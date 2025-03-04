@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 import fs from 'fs';
-import youtubeDl from 'youtube-dl-exec'; 
+import ytDlpExec from 'youtube-dl-exec' 
 
 const downloadDir = path.join(process.cwd(), 'downloads');
 if (!fs.existsSync(downloadDir)) {
@@ -24,9 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}.mp4`);
 
-     
-      const output = await youtubeDl(url, {
-        output: filePath, //output file path
+      const output = await ytDlpExec(url, {
+        output: filePath,
         dumpSingleJson: true,
         noCheckCertificates: true,
         noWarnings: true,
@@ -43,6 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(500).json({
         error: error.message || 'Failed to download video',
         stack: error.stack,
+        code: error.code, 
       });
     }
   } else {

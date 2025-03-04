@@ -23,9 +23,14 @@ const HomePage = () => {
       });
       console.log("it works fine until here")
       if (!response.ok) {
-        const errorData = await response.json();
-        console.log("check 5")
-        setMessage(`Error: ${errorData.error || 'Failed to download video'}`);
+        try {
+          const errorData = await response.json();
+          setMessage(`Error: ${errorData.error || 'Failed to download video'}`);
+        } catch (jsonError) {
+          const errorHtml = await response.text();
+          console.error("Error response (not JSON):", errorHtml);
+          setMessage("An error occurred. Please try again later.");
+        }
         return;
       }
 
@@ -36,9 +41,9 @@ const HomePage = () => {
         setMessage("Error while downloading video");
       }
     } catch (error) {
-      console.log(`Error: ${error}`);
+      console.error("Error during fetch:", error);
       setMessage("An unexpected error occurred");
-    }
+   }
   };
 
   return (
