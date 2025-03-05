@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
       // Save the video to the public/downloads folder
-      const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}.mp4`);
+      const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}`);
 
       // Download the video
       const output = await ytDlpExec(url, {
@@ -32,7 +32,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         noCheckCertificates: true,
         noWarnings: true,
         preferFreeFormats: true,
-        addHeader:['user-agent : googlebot']
+        format:'mp4',
+        addHeader: ['referer:youtube.com', 'user-agent:googlebot']
       });
 
       console.log('Downloaded video successfully:', output);
