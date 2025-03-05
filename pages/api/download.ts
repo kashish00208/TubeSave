@@ -32,7 +32,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         noCheckCertificates: true,
         noWarnings: true,
         preferFreeFormats: true,
-        format:'mp4',
         addHeader: ['referer:youtube.com', 'user-agent:googlebot']
       });
 
