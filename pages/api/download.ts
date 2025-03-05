@@ -4,7 +4,7 @@ import fs from 'fs';
 import ytDlpExec from 'youtube-dl-exec';
 
 // Changed download folder to public/downloads to allow Next.js to serve files
-const downloadDir = path.join(process.cwd(), 'public', 'downloads');
+const downloadDir = path.join(process.cwd(), 'downloads');
 if (!fs.existsSync(downloadDir)) {
   fs.mkdirSync(downloadDir, { recursive: true });
 }
@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-      // Save the video to the public/downloads folder
+      // Save the video to the downloads folder
       const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}`);
 
       // Download the video
