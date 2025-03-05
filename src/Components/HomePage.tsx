@@ -9,9 +9,9 @@ const HomePage = () => {
     e.preventDefault();
     if (!url) {
       setMessage("Provide a URL");
-      return; 
+      return;
     }
-    setMessage(""); 
+    setMessage("");
 
     try {
       const response = await fetch("/api/download", {
@@ -19,18 +19,12 @@ const HomePage = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ url }), 
+        body: JSON.stringify({ url }),
       });
-      console.log("it works fine until here")
+      console.log("it works fine until here");
       if (!response.ok) {
-        try {
-          const errorData = await response.json();
-          setMessage(`Error: ${errorData.error || 'Failed to download video'}`);
-        } catch (jsonError) {
-          const errorHtml = await response.text();
-          console.error("Error response (not JSON):", errorHtml);
-          setMessage("An error occurred. Please try again later.");
-        }
+        const errorData = await response.json();
+        setMessage(`Error: ${errorData.error || "Failed to download video"}`);
         return;
       }
 
@@ -43,7 +37,7 @@ const HomePage = () => {
     } catch (error) {
       console.error("Error during fetch:", error);
       setMessage("An unexpected error occurred");
-   }
+    }
   };
 
   return (

@@ -26,11 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const output = await ytDlpExec(url, {
         output: filePath,
-        dumpSingleJson: true,
         noCheckCertificates: true,
         noWarnings: true,
-        preferFreeFormats: true,
-        addHeader: ['referrer:youtube.com', 'user-agent:googlebot'],
+        preferFreeFormats:true,
       });
 
       console.log('Downloaded video successfully:', output);
