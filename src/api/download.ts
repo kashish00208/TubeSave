@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 import fs from 'fs';
-import ytDlpExec from 'youtube-dl-exec' 
+import ytDlpExec from 'youtube-dl-exec';
 
-const downloadDir = path.join(process.cwd(), 'downloads');
+// Changed download folder to public/downloads to allow Next.js to serve files
+const downloadDir = path.join(process.cwd(), 'public', 'downloads');
 if (!fs.existsSync(downloadDir)) {
   fs.mkdirSync(downloadDir, { recursive: true });
 }
@@ -22,17 +23,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
+      // Save the video to the public/downloads folder
       const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}.mp4`);
 
+      // Download the video
       const output = await ytDlpExec(url, {
         output: filePath,
         noCheckCertificates: true,
         noWarnings: true,
-        preferFreeFormats:true,
+        preferFreeFormats: true,
+        addHeader:['user-agent : googlebot']
       });
 
       console.log('Downloaded video successfully:', output);
 
+      // the file URL to return to the client
       const fileUrl = `/downloads/${path.basename(filePath)}`;
       res.status(200).json({ message: 'Download successful', fileUrl });
     } catch (error: any) {
@@ -40,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(500).json({
         error: error.message || 'Failed to download video',
         stack: error.stack,
-        code: error.code, 
+        code: error.code,
       });
     }
   } else {
