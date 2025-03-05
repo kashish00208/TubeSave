@@ -32,7 +32,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         noCheckCertificates: true,
         noWarnings: true,
         preferFreeFormats: true,
-        addHeader: ['referer:youtube.com', 'user-agent:googlebot']
+        addHeader: ['referer:youtube.com', 'user-agent:googlebot'],
+        format: 'bestvideo+bestaudio/best',  
       });
 
       console.log('Downloaded video successfully:', output);
