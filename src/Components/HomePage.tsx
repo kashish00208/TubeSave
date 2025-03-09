@@ -12,7 +12,7 @@ const HomePage = () => {
       setMessage("Provide a URL");
       return;
     }
-    setMessage(""); 
+    setMessage("");
 
     try {
       const response = await fetch("/api/download", {
@@ -37,7 +37,7 @@ const HomePage = () => {
         setDownloadLink(data.fileUrl);
       } else {
         setMessage("Error while downloading video");
-        setDownloadLink(""); 
+        setDownloadLink("");
       }
     } catch (error) {
       console.error("Error during fetch:", error);
@@ -47,22 +47,24 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleInputChange}>
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="Enter the URL"
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <p>{message}</p>
-      {downloadLink && (
-        <a href={downloadLink} target="_blank" rel="noopener noreferrer">
-          Download your video here
-        </a>
-      )}
+    <div className="h-screen w-screen bg-gradient-to-r from-slate-500 to-stone-700 flex items-center justify-center" >
+      <div className="bg-white ">
+        <form onSubmit={handleInputChange}>
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Enter the URL"
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <p>{message}</p>
+        {downloadLink && (
+          <a href={downloadLink} target="_blank" rel="noopener noreferrer">
+            Download your video here
+          </a>
+        )}
+      </div>
     </div>
   );
 };
