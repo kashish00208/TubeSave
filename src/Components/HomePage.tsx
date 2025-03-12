@@ -44,10 +44,17 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="h-screen w-screen bg-gray-900">
-      <NavBar />
-        <div className="flex items-center justify-center">
-          <h1>Watch Offline - Download YouTube Videos Now!</h1>
+      <div className="h-screen w-screen bg-gray-900 ">
+        <NavBar />
+        <div className="flex items-center justify-center flex-col px-8 pt-12">
+          <h1 className="text-white font-bold text-4xl">
+            Watch Offline - Download YouTube Videos Now!
+          </h1>
+          <p className="text-white  text-2xl text-center p-4">
+            Download YouTube videos instantly and watch offline anytime.
+            Convert, save, and manage your favorite videos effortlessly—all in
+            one place.
+          </p>
           <div className="bg-white ">
             <form onSubmit={handleInputChange}>
               <input
