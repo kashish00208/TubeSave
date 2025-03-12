@@ -4,7 +4,6 @@ import { useState } from "react";
 const HomePage = () => {
   const [url, setUrl] = useState("");
   const [message, setMessage] = useState("");
-  const [downloadLink, setDownloadLink] = useState("");
 
   const handleInputChange = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +22,6 @@ const HomePage = () => {
         body: JSON.stringify({ url }),
       });
 
-      console.log("it works fine until here");
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -34,15 +32,13 @@ const HomePage = () => {
       const data = await response.json();
       if (data.fileUrl) {
         setMessage("Video Downloaded");
-        setDownloadLink(data.fileUrl);
+        setUrl("")
       } else {
         setMessage("Error while downloading video");
-        setDownloadLink("");
       }
     } catch (error) {
       console.error("Error during fetch:", error);
       setMessage("An unexpected error occurred");
-      setDownloadLink("");
     }
   };
 
@@ -58,12 +54,8 @@ const HomePage = () => {
           />
           <button type="submit">Submit</button>
         </form>
+
         <p>{message}</p>
-        {downloadLink && (
-          <a href={downloadLink} target="_blank" rel="noopener noreferrer">
-            Download your video here
-          </a>
-        )}
       </div>
     </div>
   );
