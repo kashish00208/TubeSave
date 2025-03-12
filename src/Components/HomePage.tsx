@@ -43,7 +43,9 @@ const HomePage = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-r from-slate-500 to-stone-700 flex items-center justify-center" >
+    <div className="h-screen w-screen bg-gray-900 flex items-center justify-center" >
+      
+      <h1>Watch Offline - Download YouTube Videos Now!</h1>
       <div className="bg-white ">
         <form onSubmit={handleInputChange}>
           <input
