@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import NavBar from "./NavBar";
 
 const HomePage = () => {
   const [url, setUrl] = useState("");
@@ -22,7 +23,6 @@ const HomePage = () => {
         body: JSON.stringify({ url }),
       });
 
-
       if (!response.ok) {
         const errorData = await response.json();
         setMessage(`Error: ${errorData.error || "Failed to download video"}`);
@@ -32,7 +32,7 @@ const HomePage = () => {
       const data = await response.json();
       if (data.fileUrl) {
         setMessage("Video Downloaded");
-        setUrl("")
+        setUrl("");
       } else {
         setMessage("Error while downloading video");
       }
@@ -43,23 +43,27 @@ const HomePage = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-gray-900 flex items-center justify-center" >
-      
-      <h1>Watch Offline - Download YouTube Videos Now!</h1>
-      <div className="bg-white ">
-        <form onSubmit={handleInputChange}>
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Enter the URL"
-          />
-          <button type="submit">Submit</button>
-        </form>
+    <>
+      <div className="h-screen w-screen bg-gray-900">
+      <NavBar />
+        <div className="flex items-center justify-center">
+          <h1>Watch Offline - Download YouTube Videos Now!</h1>
+          <div className="bg-white ">
+            <form onSubmit={handleInputChange}>
+              <input
+                type="text"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder="Enter the URL"
+              />
+              <button type="submit">Submit</button>
+            </form>
 
-        <p>{message}</p>
+            <p>{message}</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
