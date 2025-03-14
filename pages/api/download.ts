@@ -44,12 +44,8 @@ export default async function handler(
     // the file URL to return to the client
     const fileUrl = `/downloads/${path.basename(filePath)}`;
     res.status(200).json({ message: "Download successful", fileUrl });
-  } catch (error: any) {
-    console.error("Error in downloading video:", error);
-    res.status(500).json({
-      error: error.message || "Failed to download video",
-      stack: error.stack,
-      code: error.code,
-    });
+    } catch (error) {
+    console.error("Error in downloading video:", );
+    res.status(500).json({message:error + "failed to download the content"})
   }
 }
