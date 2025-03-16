@@ -25,45 +25,52 @@ const HomePage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        setMessage(`Error: ${errorData.error || "Failed to download video"}`);
+        setMessage(`❌ ${errorData.error || "Failed to download video"}`);
         return;
       }
 
       const data = await response.json();
       if (data.fileUrl) {
-        setMessage("Video Downloaded");
+        setMessage("✅ Video Downloaded Successfully!");
         setUrl("");
       } else {
-        setMessage("Error while downloading video");
+        setMessage("❌ Error while downloading video");
       }
     } catch (error) {
       console.error("Error during fetch:", error);
-      setMessage("An unexpected error occurred");
+      setMessage("❌ An unexpected error occurred");
     }
   };
 
   return (
     <>
-      <div className="h-screen w-screen bg-gray-900 ">
+      <div className="h-screen w-screen bg-gray-900 flex flex-col">
         <NavBar />
-        <div className="flex items-center justify-center flex-col sm:mt-10 lg:mt-20 md:mt-20 m-10">
-          <h1 className="text-white font-bold text-xl">
-          YouTube Video Downloader
+        <div className="flex flex-col items-center justify-center flex-1 px-4">
+          <h1 className="text-white font-bold text-2xl mb-6">
+            YouTube Video Downloader
           </h1>
-          <div className="rounded-md">
-            <form onSubmit={handleInputChange}>
+          <div className="bg-slate-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
+            <form onSubmit={handleInputChange} className="flex flex-col">
               <input
                 type="text"
                 value={url}
-                className=" border-2 border-black rounded-md w-full min-w-96 shadow-2xl bg-slate-700 my-4 p-2"
+                className="border border-gray-600 rounded-md w-full p-3 bg-slate-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-all"
                 onChange={(e) => setUrl(e.target.value)}
-                placeholder="Enter the URL to download the video"
+                placeholder="Enter the video URL"
               />
-              <br />
-              <button className="rounded-md w-full bg-blue-500 text-white p-1 shad" type="submit">Submit</button>
+              <button
+                className="rounded-md w-full bg-blue-500 text-white p-3 mt-4 font-semibold hover:bg-blue-600 transition-all"
+                type="submit"
+              >
+                Download Video
+              </button>
             </form>
-
-            <p>{message}</p>
+            {message && (
+              <p className={`mt-4 text-center text-sm font-semibold ${message.startsWith("✅") ? "text-green-400" : "text-red-400"}`}>
+                {message}
+              </p>
+            )}
           </div>
         </div>
       </div>
