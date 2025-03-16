@@ -46,7 +46,7 @@ const HomePage = () => {
     <>
       <div className="h-screen w-screen bg-gray-900 ">
         <NavBar />
-        <div className="flex items-center justify-center flex-col">
+        <div className="flex items-center justify-center flex-col sm:mt-10 lg:mt-20 md:mt-20 m-10">
           <h1 className="text-white font-bold text-xl">
           YouTube Video Downloader
           </h1>
