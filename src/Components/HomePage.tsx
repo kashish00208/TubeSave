@@ -46,27 +46,21 @@ const HomePage = () => {
     <>
       <div className="h-screen w-screen bg-gray-900 ">
         <NavBar />
-        <div className="flex items-center justify-center flex-col px-8 pt-12 ">
-          <h1 className="text-white font-bold text-4xl">
-            Watch Offline - Download YouTube Videos Now!
+        <div className="flex items-center justify-center flex-col">
+          <h1 className="text-white font-bold text-xl">
+          YouTube Video Downloader
           </h1>
-          <p className="text-white  text-2xl text-center p-4">
-            Download YouTube videos instantly and watch offline anytime.
-            Convert, save, and manage your favorite videos effortlessly—all in
-            one place.
-          </p>
-          <div className="bg-white p-5 rounded-2xl mt-5 w-3/4 ">
+          <div className="rounded-md">
             <form onSubmit={handleInputChange}>
-              <p className="text-3xl font-bold">Paste your link here</p>
               <input
                 type="text"
                 value={url}
-                className="p-1 my-3 border-2 border-black rounded-xl w-3/4"
+                className=" border-2 border-black rounded-md w-full min-w-96 shadow-2xl bg-slate-700 my-4 p-2"
                 onChange={(e) => setUrl(e.target.value)}
-                placeholder="Enter the URL"
+                placeholder="Enter the URL to download the video"
               />
               <br />
-              <button className="rounded-lg px-2 mr-2 text-xl bg-gray-900 text-white " type="submit">Submit</button>
+              <button className="rounded-md w-full bg-blue-500 text-white p-1 shad" type="submit">Submit</button>
             </form>
 
             <p>{message}</p>
