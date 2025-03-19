@@ -4,10 +4,12 @@ import NavBar from "./NavBar";
 
 const HomePage = () => {
   const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleInputChange = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     if (!url) {
       setMessage("Provide a URL");
       return;
