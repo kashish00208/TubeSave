@@ -34,6 +34,7 @@ const HomePage = () => {
       const data = await response.json();
       if (data.fileUrl) {
         setMessage("✅ Video Downloaded Successfully!");
+        setLoading(false);
         setUrl("");
       } else {
         setMessage("❌ Error while downloading video");
@@ -62,10 +63,11 @@ const HomePage = () => {
                 placeholder="Enter the video URL"
               />
               <button
+                disabled={loading}  
                 className="rounded-md w-full bg-blue-500 text-white p-3 mt-4 font-semibold hover:bg-blue-600 transition-all"
                 type="submit"
               >
-                Download Video
+                {loading?"Downloading the video":"Download video"}
               </button>
             </form>
             {message && (
