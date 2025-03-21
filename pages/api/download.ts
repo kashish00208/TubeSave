@@ -4,7 +4,7 @@ import fs from "fs";
 import ytDlpExec from "youtube-dl-exec";
 
 // Changed download folder to public/downloads to allow Next.js to serve files
-const downloadDir = path.join("/", "Downloads");
+const downloadDir = path.join("/tmp", "Downloads");
 if (!fs.existsSync(downloadDir)) {
   fs.mkdirSync(downloadDir, { recursive: true });
 }
