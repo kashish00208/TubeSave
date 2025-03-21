@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import path from "path";
-import fs from "fs";
+//import fs from "fs";
 import ytDlpExec from "youtube-dl-exec";
 
 // Changed download folder to public/downloads to allow Next.js to serve files
