@@ -4,11 +4,11 @@ import fs from "fs";
 import ytDlpExec from "youtube-dl-exec";
 
 // Changed download folder to public/downloads to allow Next.js to serve files
-const downloadDir = path.join(process.cwd(), "downloads");
+const downloadDir = path.join("/", "Downloads");
 if (!fs.existsSync(downloadDir)) {
   fs.mkdirSync(downloadDir, { recursive: true });
 }
-
+console.log(downloadDir)
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -49,3 +49,5 @@ export default async function handler(
     res.status(500).json({message:error + "failed to download the content"})
   }
 }
+//C:\downloads
+//Downloads
