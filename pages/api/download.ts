@@ -29,7 +29,6 @@ export default async function handler(
     // Save the video to the downloads folder
     const downloadDir = "/tmp";
     const filePath = path.join(downloadDir, `downloaded_video_${Date.now()}`);
-    const fileName = `downloaded_video_${Date.now()}.mp4`;
     // Download the video 
     const output = await ytDlpExec(url, {
       output: filePath,
