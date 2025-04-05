@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs";
 import ytDlpExec from "youtube-dl-exec";
 
-const downloadDir = path.join(process.cwd(), "public", "downloads");
+const downloadDir = path.join("/", "Downloads");
 if (!fs.existsSync(downloadDir)) {
   fs.mkdirSync(downloadDir, { recursive: true });
 }
