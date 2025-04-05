@@ -40,7 +40,8 @@ const HomePage = () => {
       }
     } catch (error) {
       console.error("Error during fetch:", error);
-      setMessage("❌ An unexpected error occurred");
+      setUrl("");
+      setMessage("❌ An unexpected error occurred try again later");
     }
   };
 
