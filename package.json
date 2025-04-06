@@ -11,6 +11,7 @@
   "dependencies": {
     "mongoose": "^8.10.1",
     "next": "^15.2.4",
+    "os": "^0.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "youtube-dl-exec": "^3.0.16"
