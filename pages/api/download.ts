@@ -1,10 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import path from "path";
 import fs from "fs";
-import os from 'os'
 import ytDlpExec from "youtube-dl-exec";
 
-const downloadDir = path.join(os.homedir(), "Downloads");
+const downloadDir = "/tmp"
 if (!fs.existsSync(downloadDir)) {
   fs.mkdirSync(downloadDir, { recursive: true });
 }
