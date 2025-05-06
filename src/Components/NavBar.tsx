@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 
+
 const NavBar = () => {
   return (
     <div className="w-full p-4 flex justify-between text-white shadow-2xl">
