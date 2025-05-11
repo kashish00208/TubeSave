@@ -16,13 +16,6 @@ const NavBar = () => {
     <div className="m-5 rounded-2xl px-6 py-4 text-sm bg-black bg-opacity-95 text-white">
       <div className="flex justify-between items-center ">
         <div className="text-xl font-bold">TubeSave</div>
-        <div className="hamburger block md:hidden">
-          <img
-            src="interface.png"
-            alt="imggg"
-            className="invert w-6 h-6 cursor-pointer"
-          />
-        </div>
         <div className=" gap-6 hidden md:block">
           {navItems.map((item, i) => (
             <a
@@ -40,7 +33,7 @@ const NavBar = () => {
           ))}
         </div>
 
-        <div className="lg:flex gap-2 hidden md:block">
+        <div className="lg:flex md:gap-2 gap-2  block md:hidden">
           <button className=" ">SignUp</button>
           <span>|</span>
           <button className="">LogIn</button>
