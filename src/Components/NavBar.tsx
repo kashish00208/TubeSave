@@ -13,7 +13,7 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="m-5 rounded-2xl px-6 py-4 text-sm bg-black bg-opacity-95 text-white">
+    <div className="m-5 rounded-2xl px-6 py-4 text-sm bg-black bg-opacity-95 text-white ">
       <div className="flex justify-between items-center ">
         <div className="text-xl font-bold">TubeSave</div>
         <div className=" gap-6 hidden md:block">
