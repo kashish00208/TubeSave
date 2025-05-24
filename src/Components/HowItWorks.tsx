@@ -27,7 +27,7 @@ const steps = [
   },
 ];
 
-export function GridBackground() {
+export function HowItWorks() {
   return (
     <div className="relative w-full flex items-center justify-center bg-white overflow-hidden">
       <div
