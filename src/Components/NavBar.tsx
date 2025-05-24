@@ -33,16 +33,14 @@ const NavBar = () => {
           ))}
         </div>
 
-        <div className="lg:flex md:gap-2 gap-2  block md:hidden">
-          <button className=" ">SignUp</button>
-          <span>|</span>
-          <button className="">LogIn</button>
+        <div className="lg:flex block md:hidden ">
+            <button className="">SignUp</button>
+            <span className="mx-2">|</span>
+            <button className="">LogIn</button>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 
 export default NavBar;
-
-
