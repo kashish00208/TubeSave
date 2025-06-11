@@ -13,7 +13,7 @@ const NavBar = () => {
 
   return (
     <div className="dark:bg-black transition-colors duration-300">
-      <div className="">
+      <div className="mt-5">
         <div className="mx-5 top-5 rounded-2xl px-6 py-4 text-sm bg-white dark:bg-neutral-900 bg-opacity-95 text-black dark:text-white shadow-md">
           <div className="flex justify-between items-center">
             {/* Logo */}
