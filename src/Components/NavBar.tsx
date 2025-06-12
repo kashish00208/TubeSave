@@ -5,10 +5,9 @@ const NavBar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const navItems = [
-    { title: "Home", link: "#home" },
+    { title: "Home", link: "/" },
     { title: "How it works", link: "#howItworks" },
     { title: "FAQ", link: "#faq" },
-    { title: "About", link: "#about" },
   ];
 
   return (

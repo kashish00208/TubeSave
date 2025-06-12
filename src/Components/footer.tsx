@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="bg-black text-white border-t border-gray-800 mt-10">
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
         <div className="text-center sm:text-left">
-          <h2 className="text-xl font-semibold">YTExtractor</h2>
+          <h2 className="text-xl font-semibold">TubeSave</h2>
           <p className="text-sm text-gray-400">
             Download your favorite YouTube videos — fast, free, and easy.
           </p>
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
             Terms of Service
           </a>
           <a
-            href="mailto:support@ytextractor.com"
+            href="mailto:support@TubeSave.com"
             className="text-sm text-gray-400 hover:text-white transition"
           >
             Contact
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="text-center text-sm text-gray-500 py-4 border-t border-gray-700">
-        &copy; {new Date().getFullYear()} YTExtractor. Built with ❤️ by Kashish.
+        &copy; {new Date().getFullYear()} TubeSave. Built with ❤️ by Kashish.
       </div>
     </footer>
   );
