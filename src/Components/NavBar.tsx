@@ -15,10 +15,8 @@ const NavBar = () => {
       <div className="mt-5">
         <div className="mx-5 top-5 rounded-2xl px-6 py-4 text-sm bg-white dark:bg-neutral-900 bg-opacity-95 text-black dark:text-white shadow-md">
           <div className="flex justify-between items-center">
-            {/* Logo */}
             <div className="text-xl font-bold">TubeSave</div>
 
-            {/* Desktop nav links */}
             <div className="gap-4 hidden md:flex">
               {navItems.map((item, i) => (
                 <a
@@ -36,7 +34,6 @@ const NavBar = () => {
               ))}
             </div>
 
-            {/* Auth buttons */}
             <div className="flex items-center gap-3 text-sm">
               <button className="text-blue-600 dark:text-blue-400 hover:underline">
                 Sign Up

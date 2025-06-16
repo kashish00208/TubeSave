@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import NavBar from "./NavBar";
 
 const HomePage = () => {
   const [url, setUrl] = useState("");
@@ -12,8 +11,8 @@ const HomePage = () => {
     setLoading(true);
     if (!url) {
       setMessage("Provide a URL");
-      return;
     }
+    return;
     setMessage("");
 
     try {
@@ -47,8 +46,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="h-screen w-screen bg-gray-900 flex flex-col">
-        <NavBar />
+      <div className="h-screen w-screen bg-black flex flex-col">
         <div className="flex flex-col items-center justify-center flex-1 px-4">
           <h1 className="text-white font-bold text-2xl mb-6">
             YouTube Video Downloader
