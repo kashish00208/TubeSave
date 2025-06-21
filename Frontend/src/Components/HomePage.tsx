@@ -7,42 +7,48 @@ const HomePage = () => {
   const [message, setMessage] = useState("");
 
   const handleInputChange = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    if (!url) {
-      setMessage("Provide a URL");
-    }
+  e.preventDefault();
+  setLoading(true);
+
+  if (!url) {
+    setMessage("Provide a URL");
+    setLoading(false);
     return;
-    setMessage("");
+  }
 
-    try {
-      const response = await fetch("/api/download", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
-      });
+  setMessage("");
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        setMessage(`❌ ${errorData.error || "Failed to download video"}`);
-        return;
-      }
+  try {
+    const response = await fetch("http://localhost:8000/api/download", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url }),
+    });
 
-      const data = await response.json();
-      if (data.fileUrl) {
-        setLoading(false);
-        setUrl("");
-      } else {
-        setMessage("❌ Error while downloading video");
-      }
-    } catch (error) {
-      console.error("Error during fetch:", error);
-      setUrl("");
-      setMessage("❌ An unexpected error occurred try again later");
+    const data = await response.json();
+
+    if (!response.ok) {
+      setMessage(`❌ ${data.error || "Failed to download video"}`);
+      setLoading(false);
+      return;
     }
-  };
+
+    if (data.fileUrl) {
+      setMessage("✅ Download successful! 🎉");
+      setUrl("");
+    } else {
+      setMessage("❌ Error while downloading video");
+    }
+  } catch (error) {
+    console.error("Error during fetch:", error);
+    setMessage("❌ An unexpected error occurred. Try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <>

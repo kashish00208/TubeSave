@@ -6,14 +6,15 @@ import HomePage from '../Components/HomePage'
 export default function Home() {
   return (
     <>
-      <MainPage />
+      {/* <MainPage />
       <div id="howItworks">
         <HowItWorks />
       </div>
       <div id="faq">
         <WhyUs />
       </div>
-      <Footer />
+      <Footer /> */}
+      <HomePage/>
     </>
   );
 }
