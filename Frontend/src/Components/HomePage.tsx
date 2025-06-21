@@ -47,6 +47,7 @@ const HomePage = () => {
   } finally {
     setLoading(false);
   }
+  setMessage("");
 };
 
 
