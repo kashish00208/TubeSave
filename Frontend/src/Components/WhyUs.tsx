@@ -1,3 +1,6 @@
+"use client"
+
+import { BackgroundGradient } from "./ui/BackgroundGradient";
 const features = [
   {
     emoji: "🚀",
@@ -40,11 +43,11 @@ const WhyUs = () => {
         <p className="text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto mb-12">
           Fast. Simple. No nonsense. TubeSave lets you download your favorite YouTube videos in just a few clicks—no ads, no sign-ups, no limits.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <BackgroundGradient className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, idx) => (
             <FeatureCard key={idx} {...feature} />
           ))}
-        </div>
+        </BackgroundGradient>
       </div>
     </section>
   );

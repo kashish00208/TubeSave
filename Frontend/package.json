@@ -11,12 +11,12 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "mongoose": "^8.10.1",
-    "motion": "^12.9.7",
+    "motion": "^12.19.1",
     "next": "^15.2.4",
     "os": "^0.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.2.0",
+    "tailwind-merge": "^3.3.1",
     "youtube-dl-exec": "^3.0.16"
   },
   "devDependencies": {
