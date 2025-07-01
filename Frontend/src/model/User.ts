@@ -20,4 +20,5 @@ const UserSchema : Schema<User> = new Schema ({
         required:[true,"Enter a valid username"]
     }
 })
-export default (mongoose.models.User as mongoose.Model<User>) || (mongoose.model("User",UserSchema))
+const UserModel =  (mongoose.models.User as mongoose.Model<User>) || (mongoose.model("User",UserSchema))
+export default UserModel

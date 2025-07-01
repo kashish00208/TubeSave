@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
+    "dotenv": "^17.0.1",
+    "mogoose": "^0.0.1-security",
     "mongoose": "^8.10.1",
     "motion": "^12.19.1",
     "next": "^15.2.4",
+    "next-auth": "^4.24.11",
     "os": "^0.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
