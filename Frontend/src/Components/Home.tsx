@@ -2,12 +2,11 @@ import React from "react";
 const MainPage = () => {
   return (
     <>
-      <div className="relative w-full flex items-center justify-center bg-black overflow-hidden">
+      <div className="relative w-full flex items-center justify-center bg-black overflow-hidden ">
         <div
         />
-
         <div className="absolute inset-0 z-10 bg-black pointer-events-none [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)]" />
-        <section className="flex items-center justify-center w-svw flex-col px-4 cursor">
+        <section className="flex items-center justify-center w-svw flex-col px-4 cursor ">
           <div className="relative z-20 bg-black bg-opacity-90 p-6 rounded-lg">
             <h2 className="bg-clip-text text-center bg-gradient-to-b text-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 font-bold tracking-tight">
               Link. Click. Download. <br /> Your YouTube Shortcut.

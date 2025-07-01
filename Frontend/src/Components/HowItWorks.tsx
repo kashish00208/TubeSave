@@ -14,7 +14,7 @@ const steps = [
   {
     icon: "⚙️",
     title: "3. Choose Format",
-    description: "Select the video or audio format you want to download (MP4, MP3, etc.).",
+    description: "Select the video or audio format you want to download (MP4, MP3, ).",
   },
   {
     icon: "⬇️",

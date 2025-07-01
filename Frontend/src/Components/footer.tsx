@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="text-center text-sm text-gray-500 py-4 border-t border-gray-700">
-        &copy; {new Date().getFullYear()} TubeSave. Built with ❤️ by Kashish.
+        &copy; {new Date().getFullYear()} TubeSave. Built with ❤️ by 404.
       </div>
     </footer>
   );

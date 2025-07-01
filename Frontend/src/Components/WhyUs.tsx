@@ -1,30 +1,43 @@
-"use client"
+"use client";
 
 import { BackgroundGradient } from "./ui/BackgroundGradient";
 const features = [
   {
     emoji: "🚀",
     title: "Lightning Fast Downloads",
-    description: "Paste your link and get your video in seconds—no buffering, no wait.",
+    description:
+      "Paste your link and get your video in seconds—no buffering, no wait.",
+  },
+  
+  {
+    emoji: "🔒",
+    title: "Safe & Private",
+    description:
+      "Just a single sign-up,. Download forever—privately and securely. ",
   },
   {
     emoji: "🧠",
     title: "Simple & Intuitive",
-    description: "Zero learning curve. Just copy, paste, and download. That’s it.",
-  },
-  {
-    emoji: "🔒",
-    title: "Safe & Private",
-    description: "No sign-ups or data tracking. We respect your privacy completely.",
+    description:
+      "Zero learning curve. Just copy, paste, and download. That’s it.",
   },
   {
     emoji: "💾",
     title: "High-Quality Downloads",
-    description: "Choose the resolution and format that fits your need—HD, MP3, and more.",
+    description:
+      "Choose the resolution and format that fits your need—HD, MP3, and more.",
   },
 ];
 
-const FeatureCard = ({ emoji, title, description }: { emoji: string; title: string; description: string }) => (
+const FeatureCard = ({
+  emoji,
+  title,
+  description,
+}: {
+  emoji: string;
+  title: string;
+  description: string;
+}) => (
   <div className="p-6 rounded-2xl bg-gray-100 dark:bg-neutral-900 shadow transition hover:shadow-md">
     <h3 className="text-xl font-semibold text-black dark:text-white mb-2">
       {emoji} {title}
@@ -41,13 +54,16 @@ const WhyUs = () => {
           Why Choose TubeSave?
         </h2>
         <p className="text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto mb-12">
-          Fast. Simple. No nonsense. TubeSave lets you download your favorite YouTube videos in just a few clicks—no ads, no sign-ups, no limits.
+          Fast. Simple. No nonsense. TubeSave lets you download your favorite
+          YouTube videos in just a few clicks—no ads, no sign-ups, no limits.
         </p>
-        <BackgroundGradient className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="flex flex-col gap-8">
           {features.map((feature, idx) => (
-            <FeatureCard key={idx} {...feature} />
+            <BackgroundGradient key={idx}>
+              <FeatureCard {...feature} />
+            </BackgroundGradient>
           ))}
-        </BackgroundGradient>
+        </div>
       </div>
     </section>
   );
