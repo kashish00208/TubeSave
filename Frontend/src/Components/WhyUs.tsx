@@ -59,9 +59,9 @@ const WhyUs = () => {
         </p>
         <div className="flex flex-col gap-8">
           {features.map((feature, idx) => (
-            <BackgroundGradient key={idx}>
+            <span key={idx}>
               <FeatureCard {...feature} />
-            </BackgroundGradient>
+            </span>
           ))}
         </div>
       </div>

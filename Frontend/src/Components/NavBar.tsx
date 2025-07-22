@@ -46,7 +46,7 @@ const NavBar = () => {
                 </a>
               ))}
             </div>
-            <div className="flex items-center gap-3 text-sm">
+            <div className="flex items-center gap-3 text-lg">
               <button className="text-blue-600 dark:text-blue-400 hover:underline">
                 Sign Up
               </button>

@@ -2,7 +2,7 @@ import React from "react";
 const MainPage = () => {
   return (
     <>
-      <div className="relative w-full flex items-center justify-center bg-black overflow-hidden ">
+      <div className="relative w-full flex items-center justify-center bg-black overflow-hidden mt-16">
         <div
         />
         <div className="absolute inset-0 z-10 bg-black pointer-events-none [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)]" />

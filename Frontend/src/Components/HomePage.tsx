@@ -56,7 +56,6 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-bl from-black via-neutral-900 to-black">
-      {/* Toast notification */}
       {toastActive && (
         <div
           className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center px-6 py-3 rounded-2xl shadow-xl text-zinc-100 font-semibold text-lg
