@@ -12,7 +12,6 @@
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
     "dotenv": "^17.0.1",
-    "mogoose": "^0.0.1-security",
     "mongoose": "^8.10.1",
     "motion": "^12.19.1",
     "next": "^15.2.4",
