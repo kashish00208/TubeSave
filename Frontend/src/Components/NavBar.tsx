@@ -11,12 +11,25 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="dark:bg-black transition-colors duration-300">
-      <div className="mt-5">
-        <div className="mx-5 top-5 rounded-2xl px-6 py-4 text-sm bg-white dark:bg-neutral-900 bg-opacity-95 text-black dark:text-white shadow-md">
-          <div className="flex justify-between items-center">
+    <div className="dark:bg-black transition-colors duration-300 w-full fixed top-0 left-0 z-30">
+      <div className="w-full">
+        <div className="
+          w-full
+          rounded-none
+          px-6
+          py-3
+          text-lg
+          bg-white
+          dark:bg-neutral-900
+          bg-opacity-95
+          text-black
+          dark:text-white
+          shadow-md
+          border-b
+          border-neutral-800/60
+        ">
+          <div className="flex justify-between items-center max-w-6xl mx-auto">
             <div className="text-xl font-bold">TubeSave</div>
-
             <div className="gap-4 hidden md:flex">
               {navItems.map((item, i) => (
                 <a
@@ -33,7 +46,6 @@ const NavBar = () => {
                 </a>
               ))}
             </div>
-
             <div className="flex items-center gap-3 text-sm">
               <button className="text-blue-600 dark:text-blue-400 hover:underline">
                 Sign Up

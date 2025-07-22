@@ -17,7 +17,13 @@ export const authOption : NextAuthOptions = {
             async authorize(Credentials:any):Promise:<any>{
                 await Dbonnect()
                 try{
-
+                    await UserModel.findOne({
+                        $or : [
+                            {email:cre},
+                            
+                            {}
+                        ]
+                    })
                 }
                 catch(err:any){
                     throw new Error(err)
