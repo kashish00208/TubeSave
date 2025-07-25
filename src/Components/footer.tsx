@@ -11,20 +11,14 @@ const Footer: React.FC = () => {
           </p>
         </div>
         <div className="mt-4 sm:mt-0 flex space-x-6">
-          <a
-            href="/privacy"
-            className="text-sm text-gray-400 hover:text-white transition"
-          >
+          <a className="text-sm text-gray-400 hover:text-white transition">
             Privacy Policy
           </a>
-          <a
-            href="/terms"
-            className="text-sm text-gray-400 hover:text-white transition"
-          >
+          <a className="text-sm text-gray-400 hover:text-white transition">
             Terms of Service
           </a>
           <a
-            href="mailto:support@TubeSave.com"
+            href="gakshish083@gmail.com"
             className="text-sm text-gray-400 hover:text-white transition"
           >
             Contact
