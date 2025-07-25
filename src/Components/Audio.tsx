@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 
+
 const HomePage = () => {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,8 @@ const HomePage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/downloadMp3", {
+      console.log(process.env.BACKKEND_URL )
+      const response = await fetch(`${process.env.BACKEND_URL}/api/downloadMp3`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

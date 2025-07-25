@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 
-const HomePage = () => {
+
+const page = () => {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -21,7 +22,7 @@ const HomePage = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/download", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/download`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,4 +147,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default page;
