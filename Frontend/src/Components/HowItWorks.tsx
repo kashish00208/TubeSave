@@ -11,15 +11,16 @@ const steps = [
     title: "2. Paste the Link",
     description: "Paste the copied YouTube link into the input field on this site.",
   },
-  {
-    icon: "⚙️",
-    title: "3. Choose Format",
-    description: "Select the video or audio format you want to download (MP4, MP3, ).",
-  },
+  
   {
     icon: "⬇️",
-    title: "4. Download",
+    title: "3. Download",
     description: "Click the download button to save the video or audio file to your device.",
+  },
+  {
+    icon: "⚙️",
+    title: "4.Next",
+    description: "Click on the link below to download the file in mp4 format.",
   },
 ];
 

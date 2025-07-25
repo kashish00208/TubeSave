@@ -13,7 +13,7 @@ const features = [
     emoji: "🔒",
     title: "Safe & Private",
     description:
-      "Just a single sign-up,. Download forever—privately and securely. ",
+      "No sign-up needed,. Download forever—privately and securely. ",
   },
   {
     emoji: "🧠",
