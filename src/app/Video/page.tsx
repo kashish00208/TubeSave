@@ -9,6 +9,7 @@ const page = () => {
   const [toastActive, setToastActive] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log("Strated working and downloading vdos")
     e.preventDefault();
     setMessage("");
     setToastActive(false);
@@ -20,7 +21,7 @@ const page = () => {
       setLoading(false);
       return;
     }
-
+    console.log("URL",url)
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/download`, {
         method: "POST",
@@ -39,6 +40,7 @@ const page = () => {
         return;
       }
 
+      console.log("okay that now got the responses")
       if (data.fileUrl) {
         setMessage("✅ Download successful! 🎉");
         setToastActive(true);
