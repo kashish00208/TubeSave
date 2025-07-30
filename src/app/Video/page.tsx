@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 
-
 const page = () => {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -9,7 +8,7 @@ const page = () => {
   const [toastActive, setToastActive] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log("Strated working and downloading vdos")
+    console.log("Strated working and downloading vdos");
     e.preventDefault();
     setMessage("");
     setToastActive(false);
@@ -21,15 +20,18 @@ const page = () => {
       setLoading(false);
       return;
     }
-    console.log("URL",url)
+    console.log("URL", url);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/download`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/download`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url }),
+        }
+      );
 
       const data = await response.json();
 
@@ -40,11 +42,18 @@ const page = () => {
         return;
       }
 
-      console.log("okay that now got the responses")
+      console.log("Data we have recieved here is ",data)
+
+      console.log("okay that now got the responses");
       if (data.fileUrl) {
-        setMessage("✅ Download successful! 🎉");
-        setToastActive(true);
-        setUrl("");
+        const downloadUrl = `${process.env.NEXT_PUBLIC_API_URL}${data.fileUrl}`;
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = ""; // optional: set filename if needed
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
       } else {
         setMessage("❌ Error while downloading video");
         setToastActive(true);
@@ -77,7 +86,10 @@ const page = () => {
       <div className="backdrop-blur-2xl bg-zinc-900/80 border border-zinc-800/80 shadow-2xl rounded-2xl px-8 pt-8 pb-6 w-full max-w-lg relative">
         <h1 className="text-3xl md:text-4xl font-semibold text-center text-slate-100 tracking-tight mb-7 font-mono select-none drop-shadow">
           <span className="bg-gradient-to-r from-zinc-200 via-slate-400/60 to-indigo-400 bg-clip-text text-transparent">
-            YouTube <span className="font-normal text-slate-400 opacity-70">Downloader</span>
+            YouTube{" "}
+            <span className="font-normal text-slate-400 opacity-70">
+              Downloader
+            </span>
           </span>
         </h1>
 
@@ -85,7 +97,13 @@ const page = () => {
           <div className="relative">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-600 pointer-events-none">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M4 12h16m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path
+                  d="M4 12h16m-7-7l7 7-7 7"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </span>
             <input
@@ -107,11 +125,7 @@ const page = () => {
               hover:from-neutral-800 hover:to-indigo-900 hover:scale-[1.03] hover:shadow-xl
               focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2
               transition-all active:scale-[0.98]
-              ${
-                loading
-                  ? "opacity-70 cursor-not-allowed"
-                  : "text-slate-100"
-              }
+              ${loading ? "opacity-70 cursor-not-allowed" : "text-slate-100"}
             `}
           >
             {loading && (
@@ -128,18 +142,39 @@ const page = () => {
 
       <style jsx global>{`
         @keyframes bounceIn {
-          0% { transform: scale(0.9) translateY(-32px); opacity: 0.5; }
-          80% { transform: scale(1.05) translateY(6px); }
-          100% { transform: scale(1) translateY(0); opacity: 1; }
+          0% {
+            transform: scale(0.9) translateY(-32px);
+            opacity: 0.5;
+          }
+          80% {
+            transform: scale(1.05) translateY(6px);
+          }
+          100% {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+          }
         }
         .animate-bounceIn {
           animation: bounceIn 0.5s;
         }
         @keyframes shake {
-          10%, 90% { transform: translateX(-1px); }
-          20%, 80% { transform: translateX(2px); }
-          30%, 50%, 70% { transform: translateX(-4px); }
-          40%, 60% { transform: translateX(4px); }
+          10%,
+          90% {
+            transform: translateX(-1px);
+          }
+          20%,
+          80% {
+            transform: translateX(2px);
+          }
+          30%,
+          50%,
+          70% {
+            transform: translateX(-4px);
+          }
+          40%,
+          60% {
+            transform: translateX(4px);
+          }
         }
         .animate-shake {
           animation: shake 0.4s;
