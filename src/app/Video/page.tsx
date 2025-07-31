@@ -42,18 +42,20 @@ const page = () => {
         return;
       }
 
-      console.log("Data we have recieved here is ",data)
+      console.log("Data we have recieved here is ", data);
 
-      console.log("okay that now got the responses");
+      console.log("FileURL " , data.fileUrl)
+
       if (data.fileUrl) {
         const downloadUrl = `${process.env.NEXT_PUBLIC_API_URL}${data.fileUrl}`;
+        console.log(downloadUrl)
+
         const link = document.createElement("a");
         link.href = downloadUrl;
-        link.download = ""; // optional: set filename if needed
+        link.download = "";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        
       } else {
         setMessage("❌ Error while downloading video");
         setToastActive(true);
