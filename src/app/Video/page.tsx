@@ -5,7 +5,7 @@ interface VideoPageProps {
 }
 export default async function Home({
   searchParams,
-}:VideoPageProps) {
+}:any) {
  const { url } = searchParams || {};
   if (!url) {
     return (
