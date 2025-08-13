@@ -39,7 +39,7 @@ const NavBar = () => {
         <div className="md:hidden px-6 pb-4 pt-2 bg-white dark:bg-[#111] border-t border-gray-300 dark:border-gray-800">
           <div className="flex flex-col gap-3">
             <a
-              href="https://github.com/your-repo"
+              href="https://github.com/kashish00208/TubeSave"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
