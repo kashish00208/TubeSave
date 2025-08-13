@@ -1,11 +1,12 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 const MainPage = () => {
+  const [url, setUrl] = useState("");
   const router = useRouter();
-  const handlesubmit = () =>{
-    router.push("/Audio")
-  }
+  const handleSubmit = () => {
+    router.push(`/Video?url=${encodeURIComponent(url)}`);
+  };
   return (
     <>
       <div className="relative w-full flex items-center justify-center bg-black overflow-hidden mt-16">
@@ -21,23 +22,44 @@ const MainPage = () => {
               fuss-free, and perfect for non-premium users.
             </p>
           </div>
-          <button onClick={handlesubmit} className="z-20 mt-6 px-8 py-4 bg-white text-black rounded-md font-semibold text-base transition-all duration-300 hover:bg-gradient-to-r hover:from-red-500 hover:to-yellow-400 hover:text-white shadow-lg flex items-center gap-3">
-            Try it out
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
+          <form
+            className="flex flex-col gap-4 w-full max-w-xl mx-auto mt-6"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
+            <div className="relative flex w-full">
+              <input
+                className="pl-12 pr-4 py-4 w-full rounded-l-xl border border-zinc-700 bg-black/60 text-slate-100 placeholder:text-zinc-500 text-lg shadow-inner focus:outline-none focus:border-indigo-500/80 focus:bg-zinc-900 transition-all duration-150"
+                type="text"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder="Paste YouTube URL..."
+                autoFocus
               />
-            </svg>
-          </button>
+              <button
+                type="submit"
+                className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 rounded-r-xl text-white font-semibold text-lg hover:from-indigo-400 hover:to-purple-400 active:scale-95 transition-all duration-150"
+              >
+                Download
+              </button>
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 12h16m-7-7l7 7-7 7"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+            <p className="text-lg text-white text-center">
+              Paste the full YouTube link, e.g., https://youtube.com/watch?v=...
+            </p>
+          </form>
         </section>
       </div>
     </>
