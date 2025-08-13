@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       <MainPage />
-      <div id="howItworks">
+      <div >
         <HowItWorks />
       </div>
-      <div id="faq">
+      <div >
         <WhyUs />
       </div> 
       <Footer />
