@@ -33,7 +33,7 @@ export default async function Home({ searchParams }: any) {
     }),
   };
 
-  let post = null;
+  let data = null;
 
   try {
     const response = await fetch(
@@ -44,32 +44,18 @@ export default async function Home({ searchParams }: any) {
       throw new Error("Failed to fetch video details");
     }
 
-    post = await response.json();
+    data = await response.json();
   } catch (error) {
     console.error("Error fetching video details:", error);
-    return (
-      <div className="flex flex-col justify-center items-center h-screen bg-gray-900">
-        <p className="text-red-500 text-lg">
-          Error fetching video details:{" "}
-          {error instanceof Error ? error.message : "Unknown error"}
-        </p>
-      </div>
-    );
   }
 
   return (
     <div className="min-h-screen bg-[#0B0B0B] text-white p-6">
-      <nav className="mb-10 bg-[#121212] px-6 py-4 rounded-lg shadow-md border border-gray-800">
-        <h1 className="text-2xl font-bold tracking-wide">
-          My Video Downloader
-        </h1>
-      </nav>
-
       <div className="flex justify-center">
-        {post && (
+        {data && (
           <div className="flex flex-col sm:flex-row items-center gap-8 p-6 sm:p-10 w-full max-w-5xl rounded-xl bg-[#141414] shadow-xl border border-gray-800">
             <img
-              src={post.thumbnail}
+              src={data.thumbnail}
               alt="Thumbnail"
               className="h-[200px] w-[350px] rounded-lg shadow-md object-cover hover:scale-[1.02] transition-transform"
             />
@@ -77,17 +63,17 @@ export default async function Home({ searchParams }: any) {
             <div className="flex flex-col justify-between flex-1">
               <div>
                 <h2 className="text-2xl font-semibold mb-3 text-white">
-                  {post.title}
+                  {data.title}
                 </h2>
                 <p className="text-gray-400">
                   <span className="text-blue-400 font-semibold">Length:</span>{" "}
-                  {post.duration}
+                  {data.duration}
                 </p>
               </div>
 
-              {post.medias && (
+              {data.medias && (
                 <div className="flex flex-wrap items-center gap-3 mt-5">
-                  {Object.values(post.medias).map(
+                  {Object.values(data.medias).map(
                     (media: any, index: number) => (
                       <Link
                         href={media?.url}
