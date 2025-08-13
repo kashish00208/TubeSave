@@ -1,12 +1,12 @@
 import Link from "next/link";
 import DownloadLogo from "@/Components/Download";
+interface VideoPageProps {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
 export default async function Home({
   searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const { url } = searchParams;
-
+}:VideoPageProps) {
+ const { url } = searchParams || {};
   if (!url) {
     return (
       <div className="flex flex-col h-screen w-screen">
