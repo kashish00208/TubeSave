@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
             Terms of Service
           </a>
           <a
-            href="gakshish083@gmail.com"
+            href="https://x.com/ekn3_s"
             className="text-sm text-gray-400 hover:text-white transition"
           >
             Contact
