@@ -16,7 +16,7 @@ const NavBar = () => {
 
         <nav className="hidden md:flex items-center">
           <a
-            href="hhttps://github.com/kashish00208/TubeSave"
+            href="https://github.com/kashish00208/TubeSave"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-blue-600 hover:bg-blue-700 text-white rounded-full py-2 px-5 font-medium flex items-center gap-2 transition-colors duration-300"
