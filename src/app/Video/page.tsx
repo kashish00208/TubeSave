@@ -50,7 +50,7 @@ export default async function Home({ searchParams }: any) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0B0B] text-white p-6 py-4">
+    <div className="min-h-screen bg-[#0B0B0B] text-white p-6 mt-6">
       <div className="flex justify-center">
         {data && (
           <div className="flex flex-col sm:flex-row items-center gap-8 p-6 sm:p-10 w-full max-w-5xl rounded-xl bg-[#141414] shadow-xl border border-gray-800">
