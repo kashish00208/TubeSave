@@ -22,7 +22,7 @@ const NavBar = () => {
             className="bg-blue-600 hover:bg-blue-700 text-white rounded-full py-2 px-5 font-medium flex items-center gap-2 transition-colors duration-300"
           >
             <Star size={18} className="text-black fill-black" />
-            Start it on GitHub
+            Star it on GitHub
           </a>
         </nav>
 
@@ -46,7 +46,7 @@ const NavBar = () => {
               className="w-full  text-center py-2 rounded-full font-medium bg-blue-600 hover:bg-blue-700 text-white transition flex items-center justify-center gap-2"
             >
               <Star size={18} className="text-black fill-black" />
-              Start it on GitHub
+              Star it on GitHub
             </a>
           </div>
         </div>
