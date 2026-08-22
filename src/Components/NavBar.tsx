@@ -2,16 +2,25 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Star } from "lucide-react";
+import { ArrowDownToLine, Github, Menu, Star, X } from "lucide-react";
 
 const NavBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-gray-300 dark:border-gray-800 shadow-md">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        <Link href="/" className="text-2xl font-bold text-black dark:text-white">
-          Tube<span className="text-blue-600">Save</span>
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/80 text-white shadow-lg shadow-black/10 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
+        <Link
+          href="/"
+          className="group flex items-center gap-3"
+          aria-label="TubeSave home"
+        >
+          <span className="text-xl font-bold tracking-tight">
+            <span className="mr-3 inline-flex h-9 w-9 translate-y-2 items-center justify-center rounded-lg bg-white text-black transition-transform group-hover:-rotate-6">
+              <ArrowDownToLine size={19} strokeWidth={2.5} />
+            </span>
+            Tube<span className="text-slate-400">Save</span>
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center">
@@ -19,34 +28,40 @@ const NavBar = () => {
             href="https://github.com/kashish00208/TubeSave"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-blue-600 hover:bg-blue-700 text-white rounded-full py-2 px-5 font-medium flex items-center gap-2 transition-colors duration-300"
+            className="group flex items-center gap-2 rounded-lg border border-white/20 bg-white/[0.06] px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
           >
-            <Star size={18} className="text-black fill-black" />
-            Star it on GitHub
+            <Github size={17} />
+            <span>GitHub</span>
+            <Star
+              size={14}
+              className="text-slate-400 transition group-hover:text-white"
+            />
           </a>
         </nav>
 
         <button
-          className="md:hidden text-black dark:text-white"
+          className="rounded-lg border border-white/15 p-2 text-slate-300 transition hover:border-white/40 hover:text-white md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle mobile menu"
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden px-6 pb-4 pt-2 bg-white dark:bg-[#111] border-t border-gray-300 dark:border-gray-800">
-          <div className="flex flex-col gap-3">
+        <div className="border-t border-white/10 bg-black px-5 pb-5 pt-4 md:hidden sm:px-8">
+          <div className="mx-auto max-w-6xl">
             <a
               href="https://github.com/kashish00208/TubeSave"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
-              className="w-full  text-center py-2 rounded-full font-medium bg-blue-600 hover:bg-blue-700 text-white transition flex items-center justify-center gap-2"
+              className="flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/[0.06] py-3 font-medium text-slate-200 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
             >
-              <Star size={18} className="text-black fill-black" />
-              Star it on GitHub
+              <Github size={18} />
+              Visit TubeSave on GitHub
+              <Star size={15} className="text-slate-400" />
             </a>
           </div>
         </div>

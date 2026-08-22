@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ArrowRight, Link2, ShieldCheck, Sparkles, Zap } from "lucide-react";
 
 const MainPage = () => {
   const [url, setUrl] = useState("");
@@ -16,40 +17,44 @@ const MainPage = () => {
   };
 
   return (
-    <div className="relative w-full flex items-center justify-center bg-black overflow-hidden mt-16">
-      <div />
-      <div className="absolute inset-0 z-10 bg-black pointer-events-none [mask-image:radial-gradient(ellipse_at_center,transparent_20%,white)]" />
-      <section className="flex items-center justify-center w-svw flex-col px-4">
-        <div className="relative z-20 bg-black bg-opacity-90 p-6 rounded-lg">
-          <h2 className="bg-clip-text text-center bg-gradient-to-b text-white text-2xl md:text-4xl lg:text-7xl font-sans py-2 md:py-10 font-bold tracking-tight">
-            Link. Click. Download. <br /> Your YouTube Shortcut.
-          </h2>
-          <p className="max-w-xl mx-auto text-white text-opacity-50 text-sm font-bold text-center">
-            Instantly download any YouTube video—just paste the link. Fast,
-            fuss-free, and perfect for non-premium users.
+    <main className="relative w-full overflow-hidden bg-[#090b0d] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.11),transparent_36%),linear-gradient(180deg,#151515_0%,#090909_75%)]" />
+      <section className="relative z-10 mx-auto flex min-h-[650px] w-full max-w-6xl flex-col items-center justify-center px-5 py-24 sm:px-8 lg:min-h-[690px]">
+       
+        <div className="max-w-4xl text-center">
+          <h1 className="text-balance text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Save the videos you love.
+            <span className="block bg-gradient-to-r from-white via-slate-300 to-slate-500 bg-clip-text text-transparent">
+              Keep it wonderfully simple.
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+            Paste a YouTube link and download your video or audio in just a few
+            clicks. No account, no clutter, no complicated setup.
           </p>
         </div>
 
         <form
-          className="flex flex-col gap-4 w-full max-w-xl mx-auto mt-6"
+          className="mt-10 w-full max-w-2xl"
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit();
           }}
         >
-          <div className="relative flex w-full">
+          <div className="relative flex w-full flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.06] p-2 shadow-2xl shadow-black/30 backdrop-blur sm:flex-row sm:rounded-xl">
             <input
-              className="pl-12 pr-4 py-4 w-full rounded-l-xl border border-zinc-700 bg-black/60 text-slate-100 placeholder:text-zinc-500 text-lg shadow-inner focus:outline-none focus:border-indigo-500/80 focus:bg-zinc-900 transition-all duration-150 disabled:opacity-50"
+              className="min-w-0 flex-1 rounded-xl border border-white/10 bg-[#0d0d0d] px-12 py-4 text-base text-slate-100 placeholder:text-slate-500 outline-none transition focus:border-white/50 focus:ring-4 focus:ring-white/10 disabled:opacity-50 sm:rounded-lg sm:text-lg"
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="Paste YouTube URL..."
+              placeholder="Paste your YouTube URL"
               autoFocus
               disabled={loading}
+              aria-label="YouTube URL"
             />
             <button
               type="submit"
-              className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 rounded-r-xl text-white font-semibold text-lg hover:from-indigo-400 hover:to-purple-400 active:scale-95 transition-all duration-150 disabled:opacity-50"
+              className="flex min-h-14 items-center justify-center gap-2 rounded-xl bg-white px-7 text-base font-semibold text-black transition hover:bg-slate-200 active:scale-[0.98] disabled:cursor-wait disabled:opacity-50 sm:rounded-lg sm:text-lg"
               disabled={loading}
             >
               {loading ? (
@@ -58,27 +63,34 @@ const MainPage = () => {
                   Loading...
                 </div>
               ) : (
-                "Download"
+                <>
+                  Download now
+                  <ArrowRight size={19} />
+                </>
               )}
             </button>
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M4 12h16m-7-7l7 7-7 7"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+            <span className="pointer-events-none absolute left-6 top-7 text-slate-500">
+              <Link2 size={19} />
             </span>
           </div>
-          <p className="text-lg text-white text-center">
-            Paste the full YouTube link, e.g., https://youtube.com/watch?v=...
+          <p className="mt-3 text-center text-xs text-slate-500 sm:text-sm">
+            Supports standard YouTube video links
           </p>
         </form>
+
+        <div className="mt-14 grid w-full max-w-2xl grid-cols-1 gap-3 border-t border-white/10 pt-6 text-center sm:grid-cols-3 sm:gap-0">
+            <div className="flex items-center justify-center gap-2 text-sm text-slate-300 sm:border-r sm:border-white/10">
+            <Zap size={16} className="text-white" /> Fast and straightforward
+          </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-slate-300 sm:border-r sm:border-white/10">
+            <ShieldCheck size={16} className="text-white" /> No sign-up required
+          </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-slate-300">
+            <Link2 size={16} className="text-white" /> Video and audio options
+          </div>
+        </div>
       </section>
-    </div>
+    </main>
   );
 };
 

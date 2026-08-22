@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white border-t border-gray-800 mt-10">
+    <footer className="bg-black text-white border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
         <div className="text-center sm:text-left">
           <h2 className="text-xl font-semibold">TubeSave</h2>
