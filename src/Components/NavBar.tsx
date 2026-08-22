@@ -16,9 +16,6 @@ const NavBar = () => {
           aria-label="TubeSave home"
         >
           <span className="text-xl font-bold tracking-tight">
-            <span className="mr-3 inline-flex h-9 w-9 translate-y-2 items-center justify-center rounded-lg bg-white text-black transition-transform group-hover:-rotate-6">
-              <ArrowDownToLine size={19} strokeWidth={2.5} />
-            </span>
             Tube<span className="text-slate-400">Save</span>
           </span>
         </Link>
